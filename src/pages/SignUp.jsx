@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -48,7 +49,7 @@ const SignUp = () => {
             await setDoc(doc(db, "users", user.uid), formDataCopy)
             navigate("/")
         } catch (err) {
-            console.log(err)
+            toast.error("Something Went Wrong With Your Registration")
         }
     }
     return (
