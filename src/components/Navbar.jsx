@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom"
 
 //Note the usage of ReactComponent and the as keyword
 // which allows you to import an SVG as a React component.
-import { ReactComponent as OfferIcon } from "../../assets/svg/localOfferIcon.svg"
-import { ReactComponent as ExploreIcon } from "../../assets/svg/exploreIcon.svg"
-import { ReactComponent as PersonOutlineIcon } from "../../assets/svg/personOutlineIcon.svg"
+import { ReactComponent as OfferIcon } from "../assets/svg/localOfferIcon.svg"
+import { ReactComponent as ExploreIcon } from "../assets/svg/exploreIcon.svg"
+import { ReactComponent as PersonOutlineIcon } from "../assets/svg/personOutlineIcon.svg"
 
 function Navbar() {
     return (
