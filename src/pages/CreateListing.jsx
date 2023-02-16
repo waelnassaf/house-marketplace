@@ -14,6 +14,7 @@ import {
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 
 const CreateListing = () => {
+    // eslint-disable-next-line
     const [geolocationEnabled, setGeolocationEnabled] = useState(false)
     const [loading, setLoading] = useState(false)
 
