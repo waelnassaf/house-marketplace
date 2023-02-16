@@ -2,10 +2,18 @@ import { useState, useEffect } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { getDoc, doc } from "firebase/firestore"
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+import "swiper/css/scrollbar"
+import "swiper/css/a11y"
 import { db } from "../firebase.config"
 import { getAuth } from "firebase/auth"
 import Spinner from "../components/Spinner"
 import shareIcon from "../assets/svg/shareIcon.svg"
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const Listing = () => {
     const [listing, setListing] = useState(null)
@@ -34,7 +42,26 @@ const Listing = () => {
     }
     return (
         <main>
-            {/*Slider to go here*/}
+            <Swiper
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                style={{ height: "60vh" }}
+            >
+                {listing.imgUrls.map((url, index) => {
+                    return (
+                        <SwiperSlide key={index}>
+                            <div
+                                className="swiperSlideDiv"
+                                style={{
+                                    background: `url(${listing.imgUrls[index]}) center no-repeat`,
+                                    backgroundSize: "cover",
+                                }}
+                            ></div>
+                        </SwiperSlide>
+                    )
+                })}
+            </Swiper>
 
             <div
                 className="shareIconDiv"
@@ -48,9 +75,7 @@ const Listing = () => {
             >
                 <img src={shareIcon} alt="Share " />
             </div>
-
             {shareLinkCopied && <p className="linkCopied">Link Copied!</p>}
-
             <div className="listingDetails">
                 <p className="listingName">
                     {listing.name} - $
